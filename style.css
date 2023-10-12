@@ -1,0 +1,18 @@
+/* spinner */
+
+.spinner{
+  font-size: 140px;
+}
+.spinner:after {
+  content: '◌';
+  animation: spin .5s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+
+#chart {
+    border: 1px solid black;
+}
