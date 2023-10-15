@@ -15,6 +15,27 @@
 <!-- chart -->
 <canvas id="chart" width="1000" height="600"></canvas>
 
+<!-- attempt on displaying list of available stock-->
+<h1>Available Stocks</h1>
+<ul id="stocks"></ul>
+
+<!-- getStocks() method is said to use the Axios library when called to retrieve list of available stock-->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+  const stocksList = document.getElementById('stocks');
+
+  axios.get('/stocks')
+    .then(response => {
+      const stocks = response.data.stockSymbols;
+      stocks.forEach(stock => {
+        const li = document.createElement('li');
+        li.textContent = stock;
+        stocksList.appendChild(li);
+      });
+    })
+    .catch(error => console.error(error));
+</script>
+
 <script src="scripts.js" defer></script>
 </body>
 </html>

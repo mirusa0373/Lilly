@@ -17,3 +17,13 @@ app.get('/stocks/:symbol', async (req, res) => {
 })
 
 app.listen(3000, () => console.log('Server is running!'))
+
+
+//querying backend for list of available stocks
+const availableStocks = require('./stocks')
+
+
+app.get('/stocks', async (req, res) => {
+  const stockSymbols = await stocks.getStocks()
+  res.send({ stockSymbols })
+})
